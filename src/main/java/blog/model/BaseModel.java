@@ -1,7 +1,11 @@
 package blog.model;
 
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
-
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class BaseModel{
 
 	private Long createTime;

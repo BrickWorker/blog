@@ -11,7 +11,6 @@ import com.alibaba.fastjson.JSON;
 import blog.annotation.JSONResponse;
 import blog.model.Article;
 import blog.service.ArticleService;
-import blog.service.BaseService;
 import blog.util.MediaTypes;
 
 
@@ -21,10 +20,10 @@ import blog.util.MediaTypes;
 
 @RestController
 @RequestMapping(value = "article", produces = MediaTypes.JSON_UTF_8)
-public class ArtcleController {
+public class ArticleController {
 	
 	@Autowired
-	private BaseService<Article, Long> baseService;
+	private ArticleService articleService;
 	
 	
 	/**
@@ -43,6 +42,6 @@ public class ArtcleController {
 	@JSONResponse
 	@RequestMapping(method = RequestMethod.POST)
 	public String create(@RequestBody Article article){
-		return JSON.toJSONString(this.baseService.save(article));
+		return JSON.toJSONString(this.articleService.save(article));
 	}
 }
